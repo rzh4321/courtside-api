@@ -8,4 +8,5 @@ import java.util.List;
 public interface GameService {
     public List<GameDTO> getAllGames();
     public List<GameDTO> getGamesByDate(LocalDate date);
+    GameDTO getGameById(String gameId);
 }
