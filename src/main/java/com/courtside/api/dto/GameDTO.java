@@ -1,13 +1,18 @@
 package com.courtside.api.dto;
 
-import jakarta.persistence.Column;
+import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.NoArgsConstructor;
+import com.fasterxml.jackson.annotation.JsonFormat;
+
 
 import java.math.BigDecimal;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 
 @Data
+@AllArgsConstructor
+@NoArgsConstructor
 public class GameDTO {
     private Long id;
     private String gameId;
@@ -23,8 +28,11 @@ public class GameDTO {
     private BigDecimal overUnder;
     private BigDecimal overOdds;
     private BigDecimal underOdds;
-    private LocalDateTime createdAt;
-    private LocalDateTime updatedAt;
-    private LocalDate gameDate;
 
+    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
+    private LocalDateTime createdAt;
+    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
+    private LocalDateTime updatedAt;
+    @JsonFormat(pattern = "yyyy-MM-dd")
+    private LocalDate gameDate;
 }

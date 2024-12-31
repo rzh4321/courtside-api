@@ -1,7 +1,8 @@
 package com.courtside.api.entity;
 
 import jakarta.persistence.*;
-import lombok.Data;
+import lombok.*;
+
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
 import java.time.LocalDate;
@@ -9,13 +10,14 @@ import java.util.List;
 
 @Data
 @Entity
+@NoArgsConstructor
+@AllArgsConstructor
 @Table(name = "games")
 public class Game {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(nullable = false)
     private String gameId;
 
     @Column(nullable = false)
@@ -27,9 +29,13 @@ public class Game {
     private BigDecimal homeSpreadOdds;
     private BigDecimal awaySpreadOdds;
     private BigDecimal homeSpread;
+
+    @Column(nullable = false)
     private BigDecimal openingHomeSpread;
     private BigDecimal homeMoneyline;
     private BigDecimal awayMoneyline;
+
+    @Column(nullable = false)
     private BigDecimal openingOverUnder;
     private BigDecimal overUnder;
     private BigDecimal overOdds;
