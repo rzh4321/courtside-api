@@ -33,6 +33,7 @@ public class SpringSecurityConfig {
                 .csrf(csrf -> csrf.disable())
                 .authorizeHttpRequests(auth -> {
                     auth.requestMatchers("/api/auth/**").permitAll()
+                            .requestMatchers("/api/games/**").permitAll() // Allow all game endpoints
                             .anyRequest().authenticated();
                 })
                 .sessionManagement(session -> session

@@ -16,21 +16,18 @@ import java.util.List;
 public class GameController {
     private final GameService gameService;
 
-    @PreAuthorize("hasAnyRole('ADMIN', 'USER')")
     @GetMapping
     public ResponseEntity<List<GameDTO>> getAllGames() {
         List<GameDTO> games = gameService.getAllGames();
         return ResponseEntity.ok(games);
     }
 
-    @PreAuthorize("hasAnyRole('ADMIN', 'USER')")
     @GetMapping("/date/{date}")
     public ResponseEntity<List<GameDTO>> getGamesByDate(@PathVariable LocalDate date) {
         List<GameDTO> games = gameService.getGamesByDate(date);
         return ResponseEntity.ok(games);
     }
 
-    @PreAuthorize("hasAnyRole('ADMIN', 'USER')")
     @GetMapping("/{gameId}")
     public ResponseEntity<GameDTO> getGameById(@PathVariable String gameId) {
         GameDTO game = gameService.getGameById(gameId);

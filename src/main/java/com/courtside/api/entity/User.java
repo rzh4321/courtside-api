@@ -8,6 +8,7 @@ import org.springframework.security.core.userdetails.UserDetails;
 
 import java.time.LocalDateTime;
 import java.util.Collection;
+import java.util.Collections;
 import java.util.List;
 
 @Data
@@ -41,9 +42,11 @@ public class User implements UserDetails {
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
-        return roles.stream()
-                .map(role -> new SimpleGrantedAuthority("ROLE_" + role))
-                .toList();
+//        return roles.stream()
+//                .map(role -> new SimpleGrantedAuthority("ROLE_" + role))
+//                .toList();
+        // Return empty list since we're not using roles
+        return Collections.emptyList();
     }
 
     @Override
