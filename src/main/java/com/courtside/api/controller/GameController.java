@@ -30,7 +30,9 @@ public class GameController {
 
     @GetMapping("/{gameId}")
     public ResponseEntity<GameDTO> getGameById(@PathVariable String gameId) {
+        System.out.println(gameId);
         GameDTO game = gameService.getGameById(gameId);
+        System.out.println(game);
         return ResponseEntity.ok(game);
     }
 }
