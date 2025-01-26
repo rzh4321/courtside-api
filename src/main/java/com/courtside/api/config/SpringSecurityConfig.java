@@ -37,6 +37,9 @@ public class SpringSecurityConfig {
                 .authorizeHttpRequests(auth -> {
                     auth.requestMatchers("/api/auth/**").permitAll()
                             .requestMatchers("/api/games/**").permitAll() // Allow all game endpoints
+                            .requestMatchers("/api/notify-odds-update").permitAll()
+                            .requestMatchers("/api/notify-odds-update-by-teams").permitAll()
+
                             .anyRequest().authenticated();
                 })
                 .sessionManagement(session -> session
