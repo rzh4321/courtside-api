@@ -21,6 +21,9 @@ public class WebSocketConfig implements WebSocketConfigurer {
     @Override
     public void registerWebSocketHandlers(WebSocketHandlerRegistry registry) {
         registry.addHandler(oddsWebSocketHandler, "/ws/odds")
-                .setAllowedOrigins("*"); // Be more restrictive in production
+                .setAllowedOrigins("http://localhost:3001") // Specific to your React port
+                .withSockJS();
     }
+
+
 }

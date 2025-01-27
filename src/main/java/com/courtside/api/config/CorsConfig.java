@@ -23,7 +23,9 @@ public class CorsConfig {
         config.addAllowedHeader("*"); // Allows all headers
         config.setAllowCredentials(true); // Allows cookies and authentication headers
 
+        source.registerCorsConfiguration("/ws/**", config);
         source.registerCorsConfiguration("/**", config);
         return new CorsFilter(source);
     }
+
 }

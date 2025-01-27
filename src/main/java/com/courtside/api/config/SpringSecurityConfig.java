@@ -36,10 +36,11 @@ public class SpringSecurityConfig {
                 .cors(cors -> cors.configure(http))
                 .authorizeHttpRequests(auth -> {
                     auth.requestMatchers("/api/auth/**").permitAll()
-                            .requestMatchers("/api/games/**").permitAll() // Allow all game endpoints
+                            .requestMatchers("/api/games/**").permitAll()
                             .requestMatchers("/api/notify-odds-update").permitAll()
                             .requestMatchers("/api/notify-odds-update-by-teams").permitAll()
-
+                            .requestMatchers("/ws/**").permitAll()  // Add this line
+                            .requestMatchers("/ws/odds/**").permitAll()  // And this line
                             .anyRequest().authenticated();
                 })
                 .sessionManagement(session -> session

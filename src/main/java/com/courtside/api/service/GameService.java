@@ -9,4 +9,6 @@ public interface GameService {
     public List<GameDTO> getAllGames();
     public List<GameDTO> getGamesByDate(LocalDate date);
     GameDTO getGameById(String gameId);
+    GameDTO getGameByTeamsAndDate(String homeTeam, String awayTeam, LocalDate gameDate);
+    GameDTO updateGameId(String homeTeam, String awayTeam, LocalDate gameDate, String gameId);
 }

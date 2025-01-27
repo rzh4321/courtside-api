@@ -5,10 +5,12 @@ import com.courtside.api.entity.Game;
 import com.courtside.api.exception.ResourceNotFoundException;
 import com.courtside.api.repository.GameRepository;
 import com.courtside.api.service.GameService;
+import jakarta.persistence.EntityNotFoundException;
 import lombok.AllArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.modelmapper.ModelMapper;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.time.LocalDate;
 import java.util.List;
@@ -47,5 +49,32 @@ public class GameServiceImpl implements GameService {
         Game game = gameRepository.findByGameId(gameId)
                 .orElseThrow(() -> new ResourceNotFoundException("Game not found with id: " + gameId));
         return modelMapper.map(game, GameDTO.class);
+    }
+
+    @Override
+    @Transactional(readOnly = true)
+    public GameDTO getGameByTeamsAndDate(String homeTeam, String awayTeam, LocalDate gameDate) {
+        Game game = gameRepository.findByHomeTeamAndAwayTeamAndGameDate(homeTeam, awayTeam, gameDate)
+
+                .orElseThrow(() -> new EntityNotFoundException(
+                        String.format("Game not found for teams %s vs %s on %s",
+                                homeTeam, awayTeam, gameDate)
+                ));
+        return modelMapper.map(game, GameDTO.class);
+
+    }
+
+    @Override
+    @Transactional
+    public GameDTO updateGameId(String homeTeam, String awayTeam, LocalDate gameDate, String gameId) {
+        Game game = gameRepository.findByHomeTeamAndAwayTeamAndGameDate(homeTeam, awayTeam, gameDate)
+                .orElseThrow(() -> new EntityNotFoundException(
+                        String.format("Game not found for teams %s vs %s on %s",
+                                homeTeam, awayTeam, gameDate)
+                ));
+
+        game.setGameId(gameId);
+        Game updatedGame = gameRepository.save(game);
+        return modelMapper.map(updatedGame, GameDTO.class);
     }
 }
