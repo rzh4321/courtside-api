@@ -42,10 +42,10 @@ public class Game {
     private BigDecimal overOdds;
     private BigDecimal underOdds;
 
-    @Column(name = "created_at", columnDefinition = "timestamptz", nullable = false)
+    @Column(columnDefinition = "timestamptz", nullable = false)
     private OffsetDateTime createdAt;
 
-    @Column(name = "updated_at", columnDefinition = "timestamptz", nullable = false)
+    @Column(columnDefinition = "timestamptz", nullable = false)
     private OffsetDateTime updatedAt;
 
     @Column(nullable = false)
