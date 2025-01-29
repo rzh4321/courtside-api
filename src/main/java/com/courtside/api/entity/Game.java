@@ -1,5 +1,6 @@
 package com.courtside.api.entity;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import jakarta.persistence.*;
 import lombok.*;
 
@@ -43,9 +44,11 @@ public class Game {
     private BigDecimal underOdds;
 
     @Column(nullable = false)
+    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss", timezone = "America/New_York")
     private LocalDateTime createdAt;
 
     @Column(nullable = false)
+    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss", timezone = "America/New_York")
     private LocalDateTime updatedAt;
 
     @Column(nullable = false)
