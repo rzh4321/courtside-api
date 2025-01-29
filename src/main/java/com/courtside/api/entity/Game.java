@@ -6,7 +6,7 @@ import lombok.*;
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
 import java.time.LocalDate;
-import java.time.OffsetDateTime;
+
 import java.util.List;
 
 @Data
@@ -42,11 +42,11 @@ public class Game {
     private BigDecimal overOdds;
     private BigDecimal underOdds;
 
-    @Column(columnDefinition = "timestamptz", nullable = false)
-    private OffsetDateTime createdAt;
+    @Column(nullable = false)
+    private LocalDateTime createdAt;
 
-    @Column(columnDefinition = "timestamptz", nullable = false)
-    private OffsetDateTime updatedAt;
+    @Column(nullable = false)
+    private LocalDateTime updatedAt;
 
     @Column(nullable = false)
     private LocalDate gameDate;
