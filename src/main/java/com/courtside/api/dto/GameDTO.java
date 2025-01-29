@@ -7,6 +7,7 @@ import com.fasterxml.jackson.annotation.JsonFormat;
 
 
 import java.math.BigDecimal;
+import java.time.Instant;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 
@@ -30,9 +31,9 @@ public class GameDTO {
     private BigDecimal underOdds;
 
     @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss", timezone = "America/New_York")
-    private LocalDateTime createdAt;
+    private Instant createdAt;
     @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss", timezone = "America/New_York")
-    private LocalDateTime updatedAt;
+    private Instant updatedAt;
     @JsonFormat(pattern = "yyyy-MM-dd", timezone = "America/New_York")
-    private LocalDate gameDate;
+    private Instant gameDate;
 }

@@ -6,6 +6,7 @@ import jakarta.persistence.*;
 import lombok.*;
 
 import java.math.BigDecimal;
+import java.time.Instant;
 import java.time.LocalDateTime;
 import java.time.LocalDate;
 import java.util.List;
@@ -46,15 +47,15 @@ public class Game {
 
     @Column(nullable = false)
     @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss", timezone = "America/New_York")
-    private LocalDateTime createdAt;
+    private Instant createdAt;
 
     @Column(nullable = false)
     @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss", timezone = "America/New_York")
-    private LocalDateTime updatedAt;
+    private Instant updatedAt;
 
     @Column(nullable = false)
     @JsonFormat(pattern = "yyyy-MM-dd", timezone = "America/New_York")
-    private LocalDate gameDate;
+    private Instant gameDate;
 
     @OneToMany(mappedBy = "game")
     private List<Bet> bets;
