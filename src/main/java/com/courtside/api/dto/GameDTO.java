@@ -33,6 +33,6 @@ public class GameDTO {
     private LocalDateTime createdAt;
     @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss", timezone = "America/New_York")
     private LocalDateTime updatedAt;
-    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss", timezone = "America/New_York")
+    @JsonFormat(pattern = "yyyy-MM-dd", timezone = "America/New_York")
     private LocalDate gameDate;
 }
