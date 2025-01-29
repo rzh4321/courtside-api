@@ -18,6 +18,7 @@ public class CorsConfig {
         config.addAllowedOrigin("http://localhost:3001");
         config.addAllowedOrigin("http://localhost:3000");
         // For production
+        config.addAllowedOrigin("https://nba-courtside.vercel.app/");
 
         config.addAllowedMethod("*"); // Allows all HTTP methods
         config.addAllowedHeader("*"); // Allows all headers

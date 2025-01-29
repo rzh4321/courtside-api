@@ -22,6 +22,7 @@ public class WebSocketConfig implements WebSocketConfigurer {
     public void registerWebSocketHandlers(WebSocketHandlerRegistry registry) {
         registry.addHandler(oddsWebSocketHandler, "/ws/odds")
                 .setAllowedOrigins("http://localhost:3001") // Specific to your React port
+                .setAllowedOrigins("https://nba-courtside.vercel.app/")
                 .withSockJS();
     }
 
